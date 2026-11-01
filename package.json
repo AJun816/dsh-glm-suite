@@ -1,0 +1,49 @@
+{
+  "name": "dsh-glm-suite",
+  "version": "0.3.0",
+  "description": "GLM Coding Plan full suite for DSH: web_search/web_fetch providers over web_search_prime & webReader remote MCP, glm_zread_* repo tools over zread MCP, glm_vision_* vision tools over local @z_ai/mcp-server — all with multi-key pool rotation (1310-aware). 智谱套餐四 MCP 完整封装。",
+  "type": "module",
+  "main": "lib/index.js",
+  "private": true,
+  "scripts": {
+    "test": "node --test test/unit.test.mjs",
+    "smoke": "node test/smoke.mjs",
+    "smoke:apply": "node test/integration.apply.test.mjs",
+    "smoke:vision": "node test/vision.smoke.mjs"
+  },
+  "dependencies": {
+    "@deepseek-ai/schemastery": ">=3.18.0 <4"
+  },
+  "peerDependencies": {
+    "@deepseek-ai/cordis": ">=0.2.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AJun816/dsh-glm-suite.git"
+  },
+  "bugs": {
+    "url": "https://github.com/AJun816/dsh-glm-suite/issues"
+  },
+  "homepage": "https://github.com/AJun816/dsh-glm-suite#readme",
+  "keywords": [
+    "deepseek-harness",
+    "dsh",
+    "dsh-plugin",
+    "glm",
+    "zhipu",
+    "bigmodel",
+    "coding-plan",
+    "mcp",
+    "web-search",
+    "vision"
+  ],
+  "license": "MIT",
+  "dsh": {
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    }
+  },
+  "engines": {
+    "dsh": ">=0.2.0-rc.2 <0.3.0-0"
+  }
+}

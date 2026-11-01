@@ -1,6 +1,6 @@
 {
   "name": "dsh-glm-suite",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "description": "GLM Coding Plan full suite for DSH: web_search/web_fetch providers over web_search_prime & webReader remote MCP, glm_zread_* repo tools over zread MCP, glm_vision_* vision tools over local @z_ai/mcp-server — all with multi-key pool rotation (1310-aware). 智谱套餐四 MCP 完整封装。",
   "type": "module",
   "main": "lib/index.js",

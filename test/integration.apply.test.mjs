@@ -35,7 +35,7 @@ check('T2 reader provider 注册 (id=zhipu-reader)', captured.reader?.id === 'zh
 const ZREAD_TOOLS = ['glm_zread_search_doc','glm_zread_repo_structure','glm_zread_read_file']
 const VISION_TOOLS = ['glm_vision_analyze_image','glm_vision_ui_to_artifact','glm_vision_analyze_video']
 check('T3 zread 三工具 + vision 八工具注册', captured.tools.length === 11 && ZREAD_TOOLS.every(n => captured.tools.some(t => t.name === n)) && VISION_TOOLS.every(n => captured.tools.some(t => t.name === n)) && captured.tools.filter(t => t.name.startsWith('glm_vision_')).length === 8, captured.tools.length + ' tools')
-check('T4 armed 心跳日志', captured.logs.some(l => l.includes('armed')), captured.logs[0] ?? '')
+check('T4 armed 心跳日志（含版本号）', captured.logs.some(l => /armed v\d+\.\d+\.\d+/.test(l)), captured.logs[0] ?? '')
 check('T5 search available()', captured.search?.available() === true)
 check('T6 reader available()', captured.reader?.available() === true)
 

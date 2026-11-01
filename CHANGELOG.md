@@ -4,6 +4,12 @@ All notable changes to this project are documented here. Format follows [Keep a 
 
 > 0.3.0 起从 dsh-model-failover 仓库（v0.9.x 的 packages/glm-suite）拆分为独立仓库；历史变更见彼处 CHANGELOG。
 
+## [0.3.1] — 2026-11-01
+
+### Added — 版本可观测
+- armed 心跳携带版本：`glm-suite: armed v0.3.1 search=... fetch=... ...`；运行时读 package.json（单一来源，无构建步骤）。
+- 集成测试 T4 断言心跳格式含版本号。
+
 ## [0.3.0] — 2026-11-01
 
 ### Changed — 独立仓库起步

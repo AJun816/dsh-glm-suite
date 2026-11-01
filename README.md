@@ -29,17 +29,29 @@
 - **可观测**：启动心跳 `glm-suite: armed search=... fetch=... zread=... vision=... pool=... state=...`；每次轮换一行日志（哪把 key、什么码、冷却到何时）。armed 与否一眼可辨。
 - **防御式降级**：所有注册/工具挂载 best-effort，任何异常等价于未安装；key 永不进日志/配置/错误。
 
-## 安装（桌面版手动挂载）
+## 安装
+
+### 插件管理器（Web/headless profile）
+
+| 安装源 | 输入内容 | 说明 |
+|---|---|---|
+| GitHub HTTPS（推荐） | `https://github.com/AJun816/dsh-glm-suite` | 任何能访问 GitHub 的网络 |
+| GitHub SSH | `git+ssh://git@github.com/AJun816/dsh-glm-suite.git` | 走 SSH 免密，大陆网络稳定；**不要用 git@ 简写** |
+| 本地目录 | 仓库绝对路径 | 开发调试用 |
+
+### 桌面版（Electron 应用）手动挂载
 
 桌面 profile 由桌面应用独占（`dsh plugin` CLI 拒绝 `--profile desktop`），手动三步：
 
 1. 完全退出 DeepSeek Harness；
 2. 编辑 `~/.dsh/profiles/desktop/package.json`：
-   - `dependencies` 加 `"dsh-glm-suite": "file:/Users/ajun/.dsh/plugins/dsh-glm-suite"`
+   - `dependencies` 加 `"dsh-glm-suite": "file:<本仓库绝对路径>"`（或 `git+ssh://git@github.com/AJun816/dsh-glm-suite.git`）
    - `dsh.profile.bundles` 末尾追加 `"dsh-glm-suite"`
 3. `cd ~/.dsh/profiles/desktop && pnpm install`，启动应用。
 
-（本机已完成以上挂载。）验证：DSH 日志出现 `glm-suite: armed ...`；对话里让它联网搜索，日志应出现智谱 MCP 请求与轮换记录，DeepSeek 不再被搜索计费。
+验证：DSH 日志出现 `glm-suite: armed ...`；对话里让它联网搜索，日志应出现智谱 MCP 请求与轮换记录，DeepSeek 不再被搜索计费。
+
+> 若与 dsh-model-failover v0.9.0（旧的一仓双插件形态）同装过：先卸载旧 failover 再装 ≥0.9.1，避免 glm-suite 行被 root patch 重复插入。
 
 ## 配置（cordis.patch.yml 的 glm-suite 行）
 
